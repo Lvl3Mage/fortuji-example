@@ -2,7 +2,9 @@ package es.uji.vj1229.fortuji.searchActivity
 
 import android.R
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.view.ContextThemeWrapper
 import android.widget.ArrayAdapter
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -10,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import es.uji.vj1229.fortuji.common.Cosmetic
 import es.uji.vj1229.fortuji.databinding.ActivitySearchBinding
 import es.uji.vj1229.fortuji.imagesActivity.ImagesActivity
@@ -57,10 +60,13 @@ class SearchActivity : AppCompatActivity(), SearchView {
     }
 
     override fun showError(message: String) {
-        TODO("Not yet implemented")
+
+        val ctw = ContextThemeWrapper(this, es.uji.vj1229.fortuji.R.style.CustomSnackbarTheme)
+        Snackbar.make(ctw, binding.root, message, Snackbar.LENGTH_LONG).show()
     }
 
     override fun showCosmetics(cosmetics: ArrayList<Cosmetic>) {
+        println(cosmetics.joinToString(", "))
         binding.searchCosmeticsRecycler.adapter = CosmeticsAdapter(cosmetics) {
             viewModel.onCosmeticSelected(it)
         }
@@ -71,8 +77,14 @@ class SearchActivity : AppCompatActivity(), SearchView {
 
     override fun startImagesActivity(name: String, images: ArrayList<String>) {
         val intent = Intent(this, ImagesActivity::class.java)
-        intent.putExtra("name", name)
-        intent.putStringArrayListExtra("images", images)
+        intent.putExtra(ImagesActivity.NAME, name)
+        intent.putStringArrayListExtra(ImagesActivity.IMAGES, images)
+        startActivity(intent)
+    }
+
+    override fun startVideo(video: String) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:$video"))
+        intent.putExtra("VIDEO_ID", video)
         startActivity(intent)
     }
 }

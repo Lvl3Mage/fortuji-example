@@ -7,6 +7,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
+import es.uji.vj1229.fortuji.R
 import es.uji.vj1229.fortuji.databinding.NewsDialogBinding
 
 class NewsDialog : DialogFragment() {
@@ -24,16 +25,15 @@ class NewsDialog : DialogFragment() {
                     newsTitleTextView.text = this.title
                     newsBodyTextView.text = this.body
                 }
-
             }
-
-//            numberTextView.text = viewModel.currentNumber
         }
-        return AlertDialog.Builder(requireContext()).run {
+        val dialog = AlertDialog.Builder(requireContext()).run {
             setView(binding.root)
             setPositiveButton(android.R.string.ok, null)
             create()
         }
+        dialog.window?.setBackgroundDrawableResource(R.color.background)
+        return dialog
     }
 
 }

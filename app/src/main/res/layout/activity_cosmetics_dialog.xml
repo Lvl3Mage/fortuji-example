@@ -1,84 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".CosmeticsDialog">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CosmeticsDialog">
 
     <ImageView
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_launcher_foreground"
-            android:id="@+id/imageImageView"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="4dp"
-            app:layout_constraintHorizontal_bias="0.498" />
+        android:id="@+id/imageImageView"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
 
     <TextView
-            android:text="id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/idTextView"
-            app:layout_constraintTop_toBottomOf="@+id/imageImageView"
-            android:layout_marginTop="24dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="32dp" />
+        android:id="@+id/idTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:text="id"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageImageView" />
 
     <TextView
-            android:text="type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/typeTextView"
-            app:layout_constraintTop_toBottomOf="@+id/idTextView"
-            app:layout_constraintStart_toStartOf="@+id/idTextView"
-            android:layout_marginTop="8dp" />
+        android:id="@+id/nameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="name"
+        app:layout_constraintTop_toBottomOf="@+id/idTextView"  android:layout_marginTop="8dp"    app:layout_constraintStart_toStartOf="@+id/idTextView"  /><TextView
+        android:id="@+id/typeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="type"
+        app:layout_constraintStart_toStartOf="@+id/idTextView"
+        app:layout_constraintTop_toBottomOf="@+id/nameTextView" android:layout_marginTop="8dp"/>
 
     <TextView
-            android:text="rarity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/rarityTextView"
-            app:layout_constraintTop_toBottomOf="@+id/typeTextView"
-            app:layout_constraintStart_toStartOf="@+id/typeTextView"
-            android:layout_marginTop="8dp" />
+        android:id="@+id/rarityTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="rarity"
+        app:layout_constraintStart_toStartOf="@+id/typeTextView"
+        app:layout_constraintTop_toBottomOf="@+id/typeTextView" />
 
     <TextView
-            android:text="added Date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/addedTextView"
-            app:layout_constraintTop_toBottomOf="@+id/rarityTextView"
-            app:layout_constraintStart_toStartOf="@+id/rarityTextView"
-            android:layout_marginTop="8dp" />
+        android:id="@+id/addedTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="added Date"
+        app:layout_constraintStart_toStartOf="@+id/rarityTextView"
+        app:layout_constraintTop_toBottomOf="@+id/rarityTextView" />
 
     <Button
-            android:text="Images"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imagesButton"
-            app:layout_constraintStart_toStartOf="@+id/descriptionTextView"
-            app:layout_constraintTop_toBottomOf="@+id/descriptionTextView"
-            android:layout_marginTop="48dp" />
+        android:id="@+id/imagesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Images"
+        app:layout_constraintStart_toStartOf="@+id/descriptionTextView"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionTextView" />
 
     <Button
-            android:text="Video"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/videoButton"
-            app:layout_constraintTop_toTopOf="@+id/imagesButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="32dp" />
+        android:id="@+id/videoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:text="Video"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imagesButton" />
 
     <TextView
-            android:text="description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/descriptionTextView"
-            app:layout_constraintTop_toBottomOf="@+id/addedTextView"
-            app:layout_constraintStart_toStartOf="@+id/addedTextView"
-            android:layout_marginTop="8dp" />
+        android:id="@+id/descriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/addedTextView"
+        app:layout_constraintTop_toBottomOf="@+id/addedTextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

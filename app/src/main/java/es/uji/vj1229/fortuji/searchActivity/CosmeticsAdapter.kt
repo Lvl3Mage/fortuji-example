@@ -23,10 +23,10 @@ class CosmeticsAdapter(val cosmetics: ArrayList<Cosmetic>, val onClickListener: 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val binding = holder.binding
         with(cosmetics[position]){
-            binding.searchText.text = name
-            binding.subTextSearch.text = description
+            binding.nameTextView.text = name
+            binding.descriptionTextView.text = description
         }
-        binding.searchText.setOnClickListener{
+        binding.nameTextView.setOnClickListener{
             onClickListener(cosmetics[position])
         }
     }

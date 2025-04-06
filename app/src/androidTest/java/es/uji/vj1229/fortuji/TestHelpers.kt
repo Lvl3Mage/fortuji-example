@@ -2,6 +2,7 @@ package es.uji.vj1229.fortuji
 
 import android.view.View
 import android.widget.ImageView
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.ViewAssertion
 import androidx.test.espresso.action.ViewActions.click
@@ -12,7 +13,6 @@ import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
-import es.uji.vj1229.fortuji.imagesActivity.ImagesAdapter
 import org.hamcrest.BaseMatcher
 import org.hamcrest.CoreMatchers.allOf
 import org.hamcrest.Description
@@ -47,13 +47,13 @@ internal fun isVisible(id: Int) {
 }
 
 internal fun hasDrawable(id: Int) {
-    onView(withId(id)).check(matches(HasDrawableMatcher()))
+    onView(withId(id)).check(matches(hasDrawable()))
 }
 
-internal fun recyclerViewCheckInText(recyclerId: Int, text: String, viewAssertion: ViewAssertion? = null) {
+internal fun <Holder: RecyclerView.ViewHolder> recyclerViewCheckInText(recyclerId: Int, text: String, viewAssertion: ViewAssertion? = null) {
     onView(withId(recyclerId))
         .perform(
-            RecyclerViewActions.scrollTo<ImagesAdapter.ViewHolder>(
+            RecyclerViewActions.scrollTo<Holder>(
                 hasDescendant(withText(text))
             )
         ).check(

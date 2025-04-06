@@ -8,15 +8,8 @@ class CosmeticSearchResponse (val data: List<CosmeticResponse>) {
         val type: TypeResponse,
         val rarity: RarityResponse,
         val images: ImagesResponse,
-        val introduction: IntroducedResponse
-
-    )
-
-    class IntroducedResponse(
-        val chapter: String,
-        val season: String,
-        val text: String,
-        val backendValue: Int
+        val showcaseVideo: String?,
+        val added: String,
     )
 
     class TypeResponse(

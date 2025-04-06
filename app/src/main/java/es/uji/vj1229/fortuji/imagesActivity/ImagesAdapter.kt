@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import es.uji.vj1229.fortuji.databinding.ImageRowBinding
 
-class ImagesAdapter(val images: ArrayList<String>, val context: Context) : RecyclerView.Adapter<ImagesAdapter.ViewHolder>(){
+class ImagesAdapter(val images: ArrayList<Pair<String,String>>, val context: Context) : RecyclerView.Adapter<ImagesAdapter.ViewHolder>(){
     class ViewHolder(val binding: ImageRowBinding):
         RecyclerView.ViewHolder(binding.root)
 
@@ -23,12 +23,11 @@ class ImagesAdapter(val images: ArrayList<String>, val context: Context) : Recyc
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val binding = holder.binding
-        with(images[position]){
-            Glide.with(context)
-                .load(this)
-                .fitCenter()
-                .into(binding.imagesRow)
-        }
+        binding.imageRowTitle.text = images[position].first
+        Glide.with(context)
+            .load(images[position].second)
+            .fitCenter()
+            .into(binding.imagesRow)
     }
 
 }

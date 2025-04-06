@@ -45,7 +45,6 @@ class FortniteRepository {
                     }
                 val search = ArrayList<Cosmetic>()
                 for (cosmetic in searchResponse.data) {
-                    val images : HashMap<String, String> = HashMap()
 
                     fun <K, V> hashMapOfNotNull(vararg pairs: Pair<K, V?>): HashMap<K, V> =
                         HashMap(pairs.mapNotNull {
@@ -53,16 +52,6 @@ class FortniteRepository {
                                 it.first to value
                             }
                         }.toMap())
-
-//                    cosmetic.images.icon?.let { images.put("icon", it) }
-//                    cosmetic.images.featured?.let { images.put("featured", it) }
-//                    cosmetic.images.smallIcon?.let { images.put("smallicon", it) }
-//                    cosmetic.images.bean?.small?.let { images.put("bean small", it) }
-//                    cosmetic.images.bean?.large?.let { images.put("bean large", it) }
-//                    cosmetic.images.bean?.wide?.let { images.put("bean wide", it) }
-//                    cosmetic.images.lego?.small?.let { images.put("lego small", it) }
-//                    cosmetic.images.lego?.large?.let { images.put("lego large", it) }
-//                    cosmetic.images.lego?.wide?.let { images.put("lego wide", it) }
 
                     search.add(
                         Cosmetic(
@@ -82,8 +71,8 @@ class FortniteRepository {
                                 "lego large" to cosmetic.images.lego?.large,
                                 "lego wide" to cosmetic.images.lego?.wide
                             ),
-                            null,
-                            cosmetic.introduction.text
+                            cosmetic.showcaseVideo,
+                            cosmetic.added
                         )
                     )
                 }

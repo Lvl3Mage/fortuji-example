@@ -9,7 +9,7 @@
             android:text="SearchResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/searchText"
+            android:id="@+id/nameTextView"
             android:textSize="20sp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -18,12 +18,12 @@
             android:text="Subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/subTextSearch"
-            app:layout_constraintTop_toBottomOf="@+id/searchText"
-            app:layout_constraintStart_toStartOf="@+id/searchText"
+            android:id="@+id/descriptionTextView"
+            app:layout_constraintTop_toBottomOf="@+id/nameTextView"
+            app:layout_constraintStart_toStartOf="@+id/nameTextView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintEnd_toEndOf="@+id/searchText"
+            app:layout_constraintEnd_toEndOf="@+id/nameTextView"
             app:layout_constraintHorizontal_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,15 +23,15 @@ class SearchActivityTest {
     val activityRule = ActivityScenarioRule(SearchActivity::class.java)
 
     private val nameSearches = arrayOf (
-        Pair("Lightning", arrayOf(
-            Pair("Lightning Cloak", "Crackling with furious energy."),
-            Pair("Lightning Dropper", "It's like riding, but faster."),
-            Pair("Lightning Kick!", "Hundred Lightning Legs!")
-        )),
         Pair("Fire", arrayOf(
             Pair("Fryer Fire", "Triple fried and charred to taste. Salt as necessary."),
             Pair("Fire Vortex", "The swirling flame of the great beyond."),
             Pair("Firestarter", "Warning: Contents of firestarter may be hot.")
+        )),
+        Pair("Lightning", arrayOf(
+            Pair("Lightning Cloak", "Crackling with furious energy."),
+            Pair("Lightning Dropper", "It's like riding, but faster."),
+            Pair("Lightning Kick!", "Hundred Lightning Legs!")
         )),
         Pair("Karasu", arrayOf(
             Pair("Karasu", "Guide of the ancients."),
@@ -71,7 +71,7 @@ class SearchActivityTest {
             Thread.sleep(2000)
             for ((title, description) in results) {
                 title isDisplayedOnA R.id.nameTextView
-                description isDisplayedOnA R.id.imagesButton
+                description isDisplayedOnA R.id.descriptionTextView
             }
         }
     }
@@ -85,7 +85,7 @@ class SearchActivityTest {
             Thread.sleep(2000)
             val (title, description) = result
             title isDisplayedOnA R.id.nameTextView
-            description isDisplayedOnA R.id.imagesButton
+            description isDisplayedOnA R.id.descriptionTextView
         }
     }
 
@@ -98,7 +98,7 @@ class SearchActivityTest {
             Thread.sleep(2000)
             for ((title, description) in results) {
                 title isDisplayedOnA R.id.nameTextView
-                description isDisplayedOnA R.id.imagesButton
+                description isDisplayedOnA R.id.descriptionTextView
             }
         }
     }

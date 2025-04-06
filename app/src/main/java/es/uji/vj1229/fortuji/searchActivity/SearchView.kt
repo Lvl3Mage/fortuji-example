@@ -7,4 +7,5 @@ interface SearchView {
     fun showCosmetics(cosmetics: ArrayList<Cosmetic>)
     fun showCurrentCosmeticDetails()
     fun startImagesActivity(name: String, images: ArrayList<String>)
+    fun startVideo(video:String)
 }

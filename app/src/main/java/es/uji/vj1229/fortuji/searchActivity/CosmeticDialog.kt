@@ -3,9 +3,11 @@ package es.uji.vj1229.fortuji.searchActivity
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
+import es.uji.vj1229.fortuji.R
 import es.uji.vj1229.fortuji.databinding.ActivityCosmeticsDialogBinding
 
 class CosmeticDialog : DialogFragment(){
@@ -22,6 +24,7 @@ class CosmeticDialog : DialogFragment(){
                         .fitCenter()
                         .into(imageImageView)
                     idTextView.text = this.id
+                    binding.nameTextView.text = this.name
                     typeTextView.text = this.type
                     rarityTextView.text = this.rarity
                     addedTextView.text = this.added
@@ -35,10 +38,23 @@ class CosmeticDialog : DialogFragment(){
                 viewModel.onShowImagesRequested()
             }
         }
-        return AlertDialog.Builder(requireContext()).run {
+        viewModel.selectedCosmetic?.let {
+            if (it.video == null){
+                binding.videoButton.isEnabled = false
+            }
+            else{
+                binding.videoButton.setOnClickListener{
+                    viewModel.onStartVideoRequested()
+                }
+
+            }
+        }
+        val dialog =AlertDialog.Builder(requireContext()).run {
             setView(binding.root)
             setPositiveButton(android.R.string.ok, null)
             create()
         }
+        dialog.window?.setBackgroundDrawableResource(R.color.background)
+        return dialog;
     }
 }

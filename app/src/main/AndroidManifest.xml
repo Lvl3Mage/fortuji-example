@@ -18,9 +18,6 @@
                 android:name=".imagesActivity.ImagesActivity"
                 android:exported="false" />
         <activity
-                android:name=".CosmeticsDialog"
-                android:exported="false" />
-        <activity
                 android:name=".searchActivity.SearchActivity"
                 android:exported="false" />
         <activity

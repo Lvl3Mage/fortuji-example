@@ -1,6 +1,5 @@
 package es.uji.vj1229.fortuji.searchActivity
 
-import android.content.Intent
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import es.uji.vj1229.fortuji.common.Cosmetic
@@ -12,25 +11,30 @@ class SearchViewModel : ViewModel() {
     var view: SearchView? = null
         set(value) {
             field = value
+            showCosmetics(cosmetics)
         }
+
     enum class SearchType(val label: String) {
         NAME("Name"), DESCRIPTION("Description"), ID("ID")
     }
+
     var imageURL: String? = null
-    val cosmetics = ArrayList<Cosmetic>()
+    var cosmetics = ArrayList<Cosmetic>()
     var selectedCosmetic: Cosmetic? = null
 
-    fun onSearchRequested(type: SearchType, query: String){
+    fun onSearchRequested(type: SearchType, query: String) {
         viewModelScope.launch(Dispatchers.Main) {
             FortniteRepository.search(type, query)
                 .onSuccess {
-                    showCosmetics(it)
+                    cosmetics = it;
+                    showCosmetics(cosmetics)
                 }
                 .onFailure {
-                    view?.showError("Error searching...")
+                    showErrorMessage("\"$query\" not found")
                 }
         }
     }
+
     fun showCosmetics(cosmetics: ArrayList<Cosmetic>) {
         view?.showCosmetics(cosmetics)
     }
@@ -51,6 +55,14 @@ class SearchViewModel : ViewModel() {
             images.add(entry.value)
         }
         view?.startImagesActivity(it.name, images)
+    }
+
+    fun onStartVideoRequested() {
+        selectedCosmetic?.let {
+            it.video?.let {
+                video -> view?.startVideo(video)
+            }
+        }
     }
 
 
